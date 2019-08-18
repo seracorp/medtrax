@@ -25,7 +25,9 @@
               "apps/testlab/src/favicon.ico",
               "apps/testlab/src/assets"
             ],
-            "styles": ["apps/testlab/src/styles.scss"],
+            "styles": [
+              "apps/testlab/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -75,8 +77,26 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/testlab/tsconfig.app.json"],
-            "exclude": ["**/node_modules/**", "!apps/testlab/**"]
+            "tsConfig": [
+              "apps/testlab/tsconfig.app.json",
+              "apps/testlab/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/testlab/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "apps/testlab/src/test.ts",
+            "tsConfig": "apps/testlab/tsconfig.spec.json",
+            "karmaConfig": "apps/testlab/karma.conf.js",
+            "polyfills": "apps/testlab/src/polyfills.ts",
+            "styles": [],
+            "scripts": [],
+            "assets": []
           }
         }
       }
@@ -101,7 +121,10 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "apps/testlab-e2e/tsconfig.e2e.json",
-            "exclude": ["**/node_modules/**", "!apps/testlab-e2e/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/testlab-e2e/**"
+            ]
           }
         }
       }
