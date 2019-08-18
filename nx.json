@@ -7,5 +7,12 @@
     "tslint.json": "*",
     "nx.json": "*"
   },
-  "projects": {}
+  "projects": {
+    "testlab": {
+      "tags": []
+    },
+    "testlab-e2e": {
+      "tags": []
+    }
+  }
 }

@@ -1,6 +1,112 @@
 {
   "version": 1,
-  "projects": {},
+  "projects": {
+    "testlab": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/testlab",
+      "sourceRoot": "apps/testlab/src",
+      "prefix": "seras",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/testlab",
+            "index": "apps/testlab/src/index.html",
+            "main": "apps/testlab/src/main.ts",
+            "polyfills": "apps/testlab/src/polyfills.ts",
+            "tsConfig": "apps/testlab/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "apps/testlab/src/favicon.ico",
+              "apps/testlab/src/assets"
+            ],
+            "styles": ["apps/testlab/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/testlab/src/environments/environment.ts",
+                  "with": "apps/testlab/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "testlab:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "testlab:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "testlab:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/testlab/tsconfig.app.json"],
+            "exclude": ["**/node_modules/**", "!apps/testlab/**"]
+          }
+        }
+      }
+    },
+    "testlab-e2e": {
+      "root": "apps/testlab-e2e",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "apps/testlab-e2e/protractor.conf.js",
+            "devServerTarget": "testlab:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "testlab:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/testlab-e2e/tsconfig.e2e.json",
+            "exclude": ["**/node_modules/**", "!apps/testlab-e2e/**"]
+          }
+        }
+      }
+    }
+  },
   "cli": {
     "defaultCollection": "@nrwl/angular"
   },
@@ -12,5 +118,6 @@
     "@nrwl/angular:library": {
       "unitTestRunner": "karma"
     }
-  }
+  },
+  "defaultProject": "testlab"
 }
