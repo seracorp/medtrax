@@ -26,9 +26,14 @@
               "apps/testlab/src/assets"
             ],
             "styles": [
+              "node_modules/@clr/ui/clr-ui.min.css",
+              "node_modules/@clr/icons/clr-icons.min.css",
               "apps/testlab/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/@webcomponents/custom-elements/custom-elements.min.js",
+              "node_modules/@clr/icons/clr-icons.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -81,22 +86,7 @@
               "apps/testlab/tsconfig.app.json",
               "apps/testlab/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/testlab/**"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "apps/testlab/src/test.ts",
-            "tsConfig": "apps/testlab/tsconfig.spec.json",
-            "karmaConfig": "apps/testlab/karma.conf.js",
-            "polyfills": "apps/testlab/src/polyfills.ts",
-            "styles": [],
-            "scripts": [],
-            "assets": []
+            "exclude": ["**/node_modules/**", "!apps/testlab/**"]
           }
         }
       }
@@ -121,10 +111,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "apps/testlab-e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/testlab-e2e/**"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/testlab-e2e/**"]
           }
         }
       }
