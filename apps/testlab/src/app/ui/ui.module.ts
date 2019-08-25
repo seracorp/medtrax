@@ -5,9 +5,16 @@ import { LoginComponent } from './screens/login/login.component';
 
 import { ClarityModule } from '@clr/angular';
 import { AppRoutingModule } from '../app-routing/app-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [LayoutComponent, LoginComponent],
-  imports: [CommonModule, ClarityModule, AppRoutingModule]
+  imports: [
+    CommonModule,
+    ClarityModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
+  ]
 })
 export class UiModule {}
