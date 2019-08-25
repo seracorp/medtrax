@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ClarityModule, ClrIconModule } from '@clr/angular';
+import { UiModule } from './ui/ui.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,7 +14,8 @@ import { ClarityModule, ClrIconModule } from '@clr/angular';
     RouterModule.forRoot([], { initialNavigation: 'enabled' }),
     BrowserAnimationsModule,
     ClarityModule,
-    ClrIconModule
+    ClrIconModule,
+    UiModule
   ],
   providers: [],
   bootstrap: [AppComponent]
